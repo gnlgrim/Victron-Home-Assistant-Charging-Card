@@ -23,3 +23,10 @@ Pictures Used
 /local/Victron/NoCar.png                   -  No Car connected to charger
 /local/Victron/ChargingAni.gif             -  Charging Animation
 /local/Victron/NotCharging.png             -  Not charging animation
+
+
+
+
+
+https://github.com/user-attachments/assets/f544bdc3-e6a2-4a70-bac9-e1002ebc74b0
+
