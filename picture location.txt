@@ -1,0 +1,7 @@
+Storage location
+
+www/Victron/
+
+inside home assistant its access via
+
+/local/Victron/xxx.png

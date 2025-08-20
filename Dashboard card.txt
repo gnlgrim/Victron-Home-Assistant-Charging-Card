@@ -1,0 +1,107 @@
+type: picture-elements
+elements:
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: sensor.evse_chargerstatus
+        state_not: "0"
+    elements:
+      - type: image
+        entity: switch.evse_startstopcharging
+        style:
+          top: 0%
+          left: 0%
+          width: 100%
+          transform: scale(1,1)
+        state_image:
+          "on": /local/Victron/ChargingAni.gif
+          "off": /local/Victron/NotCharging.png
+  - type: state-badge
+    entity: sensor.victron_ev_charger_power_ussage
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    style:
+      left: 83%
+      top: 42%
+      color: transparent
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: switch.evse_startstopcharging
+        state: "off"
+    elements:
+      - type: icon
+        icon: mdi:power-plug
+        style:
+          left: 87%
+          top: 80%
+          transform: scale(2,2)
+          color: grey
+        entity: switch.evse_startstopcharging
+    title: charge off
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: switch.evse_startstopcharging
+        state: "on"
+    elements:
+      - type: icon
+        icon: mdi:power-plug
+        style:
+          left: 87%
+          top: 80%
+          transform: scale(2,2)
+          color: green
+        entity: switch.evse_startstopcharging
+    title: charge on
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: switch.evse_startstopcharging
+        state: "on"
+    elements:
+      - type: state-label
+        entity: sensor.victron_ev_charger_session_time
+        prefix: "Charging Time : "
+        style:
+          left: 18%
+          top: 6%
+    title: session time
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: sensor.evse_chargerstatus
+        state_not: "0"
+    elements:
+      - type: state-label
+        entity: sensor.km74pxw_state_of_charge
+        style:
+          left: 30%
+          top: 31%
+          transform: scale(2,2)
+      - type: state-icon
+        entity: sensor.km74pxw_state_of_charge
+        style:
+          left: 18%
+          top: 30%
+          transform: scale(2,2)
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: switch.evse_startstopcharging
+        state: "on"
+    elements:
+      - type: state-label
+        entity: sensor.victron_ev_charging_cost
+        prefix: "Cost : "
+        style:
+          left: 88%
+          top: 6%
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+    title: session cost
+image: /local/Victron/NoCar.png
